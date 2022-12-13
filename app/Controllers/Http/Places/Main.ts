@@ -4,7 +4,11 @@ import { Place } from 'App/Models'
 
 export default class PlacesController {
   public async index({}: HttpContextContract) {
-    const places = await Place.query().orderBy('id', 'asc')
+    const places = await Place.query()
+      .preload('images')
+      .preload('category')
+      .preload('accessibilities')
+      .orderBy('id', 'asc')
 
     return places
   }
