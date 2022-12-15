@@ -19,7 +19,7 @@ export default class extends BaseSchema {
         .integer('category_id')
         .unsigned()
         .references('categories.id')
-        .onDelete('RESTRICT')
+        .onDelete('CASCADE')
         .onUpdate('CASCADE')
     })
   }

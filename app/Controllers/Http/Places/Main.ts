@@ -54,6 +54,8 @@ export default class PlacesController {
   public async destroy({ params }: HttpContextContract) {
     const place = await Place.findOrFail(params.id)
 
+    await place.related('accessibilities').detach()
+
     await place.delete()
   }
 }
